@@ -1,0 +1,58 @@
+.post-container {
+    background-color: #fdfdfd;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 50px 30px 50px
+;
+
+}
+.post-title {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 0;
+
+}
+.post-subtitle {
+    font-weight: bold;
+
+}
+.post-published {
+    margin:  0 0 5px 0;
+    font-weight: 400;
+    font-size: 0.8rem;
+
+}
+.post-readtime {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+
+}
+.post-content {
+    font-size: 0.9rem;
+
+}
+.post-info {
+    font-size: 0.8rem;
+
+}
+.post-backlink, .post-backlink:visited {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.post-footer {
+    background-color: var(--color-primary);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+.post-footer-text {
+    font-weight: bolder;
+    font-size: 0.8rem;
+}

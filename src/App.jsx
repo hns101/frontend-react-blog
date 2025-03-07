@@ -7,10 +7,10 @@ import Overview from "./pages/overview/Overview.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
 import Posts from "./pages/posts/Posts.jsx";
 import JsonData from './constants/data.json';
-import React from "react";
+import { useState } from "react";
 
 function App() {
-    const  [data, setData] = React.useState(JsonData);
+    const  [data, setData] = useState(JsonData);
 
     return (<>
 
@@ -18,11 +18,12 @@ function App() {
         <main className="main-container">
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/allposts" element={<Overview/>}/>
+                <Route path="/allposts" element={<Overview data={data}/>}/>
                 <Route path="/addpost" element={<AddPost/>}/>
-                {/*{data.map(() => ())}*/}
-
-                <Route path="/posts/:id" element={<Posts/>} />
+                {data.map((data) => (
+                    <Route key={data.id} path={`/posts/${data.id}`} element={<Posts data={data} />}/>
+                ))}
+                {/*<Route path="/posts/:id" element={<Posts data={data} />}/>*/}
                 <Route path="*" element={<Error404/>}/>
             </Routes>
         </main>
