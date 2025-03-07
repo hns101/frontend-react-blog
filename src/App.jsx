@@ -19,11 +19,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/allposts" element={<Overview data={data}/>}/>
-                <Route path="/addpost" element={<AddPost/>}/>
+                <Route path="/addpost" element={<AddPost post={data} setPost={setData}/>}/>
                 {data.map((data) => (
                     <Route key={data.id} path={`/posts/${data.id}`} element={<Posts data={data} />}/>
                 ))}
-                {/*<Route path="/posts/:id" element={<Posts data={data} />}/>*/}
                 <Route path="*" element={<Error404/>}/>
             </Routes>
         </main>
