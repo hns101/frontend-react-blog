@@ -32,6 +32,8 @@
 }
 .post-content {
     font-size: 0.9rem;
+    overflow: hidden;
+
 
 }
 .post-info {

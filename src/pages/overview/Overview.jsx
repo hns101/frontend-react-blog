@@ -2,10 +2,11 @@ import React from 'react';
 import './Overview.css'
 import {Link} from "react-router-dom";
 
-function Overview({data}) {
+function Overview({data,error}) {
     return (
         <>
             <h2 className="overview-title">{`Bekijk alle ${data.length} posts op het platform`}</h2>
+            {error && <h3 className="error-message">{error}</h3>}
             <div className="overview-container">
                 {data.map((data) => (
                     <Link key={data.id} to={`/posts/${data.id}`} className="link-field">
@@ -17,7 +18,6 @@ function Overview({data}) {
                     </Link>
                 ))}
             </div>
-
         </>
     );
 }

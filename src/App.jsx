@@ -6,11 +6,30 @@ import AddPost from "./pages/addpost/AddPost.jsx";
 import Overview from "./pages/overview/Overview.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
 import Posts from "./pages/posts/Posts.jsx";
-import JsonData from './constants/data.json';
-import { useState } from "react";
+// import JsonData from './constants/data.json';
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function App() {
-    const  [data, setData] = useState(JsonData);
+    const  [data, setData] = useState([]);
+    const [error, setError] = useState("");
+    const API_URL = "http://localhost:3000/posts";
+
+    // get Data
+    const fetchData = async () => {
+        try {
+            const result = await axios.get(API_URL);
+            setData(result.data);
+            setError("");
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            setError(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    },[])
 
     return (<>
 
@@ -18,7 +37,7 @@ function App() {
         <main className="main-container">
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/allposts" element={<Overview data={data}/>}/>
+                <Route path="/allposts" element={<Overview data={data} error={error} />}/>
                 <Route path="/addpost" element={<AddPost post={data} setPost={setData}/>}/>
                 {data.map((data) => (
                     <Route key={data.id} path={`/posts/${data.id}`} element={<Posts data={data} />}/>
