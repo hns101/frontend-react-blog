@@ -38,9 +38,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/allposts" element={<Overview data={data} error={error} />}/>
-                <Route path="/addpost" element={<AddPost post={data} setPost={setData}/>}/>
+                <Route path="/addpost" element={<AddPost fetchData={fetchData} />}/>
                 {data.map((data) => (
-                    <Route key={data.id} path={`/posts/${data.id}`} element={<Posts data={data} />}/>
+                    <Route key={data.id} path={`/posts/${data.id}`} element={<Posts dataId={data.id}  fetchData={fetchData} />}/>
                 ))}
                 <Route path="*" element={<Error404/>}/>
             </Routes>

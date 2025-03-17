@@ -1,9 +1,13 @@
 import './AddPost.css'
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
 
-function AddPost({post, setPost}) {
-
+function AddPost({fetchData}) {
+    const [message, setMessage] = useState("");
+    const [idPost, setIdPost] = useState("");
     // React Hooks
     const {
         register,
@@ -11,13 +15,25 @@ function AddPost({post, setPost}) {
     } = useForm();
 
     // Sending Post into are DataState
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         data.comments = 0;
         data.shares = 0;
         data.readTime = Math.round((data.content.length /100 * 0.3 ));
         data.created = new Date().toISOString();
-        data.id = post.length + 1;
-        setPost((prevPosts) => [...prevPosts, data]);
+        setMessage("");
+        try {
+            const result = await axios.post("http://localhost:3000/posts", data);
+            console.log(result);
+            setIdPost(result.data.id);
+        }
+        catch (error) {
+            console.error(error);
+            setMessage(error.message);
+        }finally {
+            fetchData();
+        }
+
+
     };
 
     return (
@@ -62,6 +78,10 @@ function AddPost({post, setPost}) {
                     Toevoegen
                 </button>
             </form>
+            <div>
+                {message && <p className="form-error-message">{message}</p>}
+                {idPost && <p className="form-message">Post is toegevoegd.<Link className="new-link" to={`/posts/${idPost}`}>Bekijk de hier gemaakte post</Link></p>}
+            </div>
 
         </>
     );
