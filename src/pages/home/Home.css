@@ -1,0 +1,14 @@
+
+.title{
+    color: var(--color-secondary);
+    text-align: center;
+
+}
+.home-logo{
+    height: 40vmin;
+    align-items: center;
+    background-color: var(--color-tertiary);
+    padding: 5vmin;
+    border-radius: 5vmin;
+
+}

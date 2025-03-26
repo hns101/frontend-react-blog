@@ -1,13 +1,53 @@
 import './App.css'
-import logo from './assets/logo-white.png'
+import Navbar from './compoments/navbar/Navbar.jsx'
+import {Route, Routes} from "react-router-dom";
+import Home from "./pages/home/Home.jsx";
+import AddPost from "./pages/addpost/AddPost.jsx";
+import Overview from "./pages/overview/Overview.jsx";
+import Error404 from "./pages/error404/Error404.jsx";
+import Posts from "./pages/posts/Posts.jsx";
+// import JsonData from './constants/data.json';
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function App() {
-    return (
-        <div className="page-container">
-            <img src={logo} alt="Company logo"/>
-            <h1>Begin hier met het maken van jouw blog-applicatie!</h1>
-        </div>
-    )
+    const  [data, setData] = useState([]);
+    const [error, setError] = useState("");
+    const API_URL = "http://localhost:3000/posts";
+
+    // get Data
+    const fetchData = async () => {
+        try {
+            const result = await axios.get(API_URL);
+            setData(result.data);
+            setError("");
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            setError(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    },[])
+
+    return (<>
+
+        <Navbar/>
+        <main className="main-container">
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/allposts" element={<Overview data={data} error={error} />}/>
+                <Route path="/addpost" element={<AddPost fetchData={fetchData} />}/>
+                {data.map((data) => (
+                    <Route key={data.id} path={`/posts/${data.id}`} element={<Posts dataId={data.id}  fetchData={fetchData} />}/>
+                ))}
+                <Route path="*" element={<Error404/>}/>
+            </Routes>
+        </main>
+
+
+    </>)
 }
 
 export default App

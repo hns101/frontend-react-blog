@@ -1,0 +1,89 @@
+.post-container {
+    background-color: #fdfdfd;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 50px 30px 50px
+;
+
+}
+.post-title {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 0;
+
+}
+.post-subtitle {
+    font-weight: bold;
+
+}
+.post-published {
+    margin:  0 0 5px 0;
+    font-weight: 400;
+    font-size: 0.8rem;
+
+}
+.post-readtime {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+
+}
+.post-content {
+    font-size: 0.9rem;
+    overflow: hidden;
+
+
+}
+.post-info {
+    font-size: 0.8rem;
+
+}
+.post-backlink, .post-backlink:visited {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.post-footer {
+    background-color: var(--color-primary);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+.post-footer-text {
+    font-weight: bolder;
+    font-size: 0.8rem;
+}
+.delete-button {
+    background-color: #cb2929;
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3rem 3rem;
+}
+.delete-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+.form-error-message {
+    color: #d31616;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    margin: -45px 0 30px 0;
+    text-align: center;
+}
+.form-message {
+    color: #3a4928;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    margin: -45px 0 30px 0;
+    text-align: center;
+}
+.new-link:visited, .new-link {
+    color: #679160;
+
+}

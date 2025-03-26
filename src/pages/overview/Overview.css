@@ -1,0 +1,44 @@
+.overview-title{
+    font-size: 2rem;
+}
+.overview-container {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-card{
+    justify-content: center;
+    align-items: center;
+    margin: 6px;
+    background-color: white;
+    color: var(--color-secondary);
+    border-radius: 5px;
+    width: 555px;
+    height: 100px;
+    padding: 20px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+.link-field,link-field:visited {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+.link-title{
+    display: inline;
+    color: var(--color-primary);
+    margin: 0 10px 0 0;
+}
+.link-author{
+    font-weight: lighter;
+}
+.link-info{
+    font-weight: 400;
+}
+.error-message{
+    color: brown;
+}
